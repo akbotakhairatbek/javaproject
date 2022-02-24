@@ -15,7 +15,7 @@ public class LoginRepository implements IUserRepository{
     public boolean createLogin(User user) {
         Connection con=null;
         try {
-            con= db.getConnection();
+            con= db.getConnection(); //connects to the database
             String sql="insert into users(login, password) values (?,?)";
             PreparedStatement stmt=con.prepareStatement(sql);
 
