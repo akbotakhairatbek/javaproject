@@ -16,22 +16,22 @@ public class LoginRepository implements IUserRepository{
         Connection con=null;
         try {
             con= db.getConnection(); //connects to the database
-            String sql="insert into users(login, password) values (?,?)"; //adds values to the table users
+            String sql="insert into users(login, password) values (?,?)";
             PreparedStatement stmt=con.prepareStatement(sql);
 
-            stmt.setString(1,user.getLogin()); 
+            stmt.setString(1,user.getLogin());
             stmt.setString(2,user.getPassword());
 
             stmt.execute();
             return true;
-        } catch (SQLException throwables) {
+        } catch (SQLException throwables) { //in this catch block conclude code on handling the SQLException exception
             throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) { //in this catch block conclude code on handling the ClassNotFoundException exception
             e.printStackTrace();
-        } finally {
-            try {
+        } finally { // in the block finally close the stream
+            try { // if a stream is closed, an exception is possible, for example, if it has not been opened, so "wrap" the code in the try block
                 con.close();
-            } catch (SQLException throwables) {
+            } catch (SQLException throwables) { // write exception processing when closing stream
                 throwables.printStackTrace();
             }
         }
