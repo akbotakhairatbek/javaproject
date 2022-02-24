@@ -16,10 +16,10 @@ public class LoginRepository implements IUserRepository{
         Connection con=null;
         try {
             con= db.getConnection(); //connects to the database
-            String sql="insert into users(login, password) values (?,?)";
+            String sql="insert into users(login, password) values (?,?)"; //adds values to the table users
             PreparedStatement stmt=con.prepareStatement(sql);
 
-            stmt.setString(1,user.getLogin());
+            stmt.setString(1,user.getLogin()); 
             stmt.setString(2,user.getPassword());
 
             stmt.execute();
